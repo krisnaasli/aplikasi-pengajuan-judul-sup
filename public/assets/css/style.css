@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    background-color: #fff;
+    min-width: 0;
+}
+
+#sidebar {
+    width: 70px; /* Lebar sidebar */
+    min-width: 70px; /* Lebar minimum */
+    height: 100vh; /* Tinggi penuh viewport */
+    z-index: 1000; /* Z-index untuk memastikan sidebar di atas elemen lain */
+    position: fixed; /* Memperbaiki posisi sidebar */
+    top: 0; /* Menempel di bagian atas */
+    left: 0; /* Menempel di sisi kiri */
+    transition: all .25s ease-in-out; /* Transisi untuk efek animasi */
+    background-color: #094d8e; /* Warna latar belakang sidebar */
+    display: flex; /* Menggunakan flexbox untuk layout */
+    flex-direction: column; /* Mengatur arah flex menjadi kolom */
+}
+
+#sidebar.expand {
+    width: 260px; /* Lebar sidebar saat diperluas */
+}
+
+#content {
+    margin-left: 70px; /* Margin awal untuk konten */
+    width: calc(100% - 70px); /* Lebar konten sesuai sisa layar */
+    transition: margin-left 0.25s ease-in-out; /* Animasi saat margin berubah */
+}
+
+#sidebar.expand + #content {
+    margin-left: 260px; /* Margin konten saat sidebar diperluas */
+    width: calc(100% - 260px); /* Lebar konten saat sidebar diperluas */
+}
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.5rem;
+}
+
+.toggle-btn i {
+    font-size: 1.5rem;
+    color: #FFF;
+}
+
+.sidebar-logo {
+    margin: auto 0;
+}
+
+.sidebar-logo a {
+    color: #FFF; /* Warna teks putih */
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-decoration: none; /* Menghilangkan garis bawah default */
+}
+
+.sidebar-logo a:hover {
+    color: #FFF; /* Warna teks tetap putih saat di-hover */
+    text-decoration: none; /* Memastikan tidak ada garis bawah saat di-hover */
+}
+
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+    display: none;
+}
+
+#sidebar.expand .sidebar-logo,
+#sidebar.expand a.sidebar-link span {
+    animation: fadeIn .25s ease;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+a.sidebar-link {
+    padding: .625rem 1.625rem;
+    color: #FFF;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i,
+.dropdown-item i {
+    font-size: 1.1rem;
+    margin-right: .75rem;
+}
+
+a.sidebar-link:hover {
+    background-color: rgb(0, 0, 0); /* Biru muda dengan transparansi */
+    border-left: 3px solid #ffffff; /* Biru lebih terang */
+    color: #ffffff; /* Warna teks putih */
+}
+
+
+.sidebar-item {
+    position: relative;
+}
+
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+    position: absolute;
+    top: 0;
+    left: 70px;
+    background-color: #0e2238;
+    padding: 0;
+    min-width: 15rem;
+    display: none;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+    display: block;
+    max-height: 15em;
+    width: 100%;
+    opacity: 1;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+
+.nav {
+    
+    background-color: #ffffff;
+    box-shadow: 0 0 2rem 0 rgba(33, 37, 41, .1);
+    
+}
+
+
+.navbar-expand .navbar-collapse {
+    min-width: 200px;
+    
+}
+
+.avatar {
+    height: 40px;
+    width: 40px;
+}
+
+a {
+    color: #094d8e; /* Warna biru kustom */
+    text-decoration: none; /* Menghapus garis bawah pada tautan */
+}
+
+a:hover {
+    color: #083e6d; /* Warna saat hover */
+}
+
+/* Border untuk box utama (seluruh halaman) */
+.box-area {
+    border: 2px solid #094d8e; /* Border utama di sekitar area */
+    border-radius: 10px; /* Sudut melengkung */
+    padding: 20px; /* Padding di dalam box */
+}
+
+
+@media (min-width: 768px) {}
